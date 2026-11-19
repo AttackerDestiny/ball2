@@ -42089,8 +42089,15 @@ do
 										end
 									end
 
-									if v953[6] and v974 - 1 < v953[7] then
-										continue
+									if v953[6] then
+										local minimumRemaining = tonumber(v953[7])
+										if not minimumRemaining or minimumRemaining ~= minimumRemaining then
+											minimumRemaining = 1
+										end
+										minimumRemaining = math.clamp(math.floor(minimumRemaining), 1, 4)
+										if v974 - 1 < minimumRemaining then
+											continue
+										end
 									end
 
 									local v975 = u60(BuffTile.GetBuffInfo, v2)
